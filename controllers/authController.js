@@ -58,7 +58,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 		passwordConfirm: req.body.passwordConfirm,
 	});
 	const url = `${req.protocol}:${req.get('host')}/me`;
-	console.log(url);
+	// console.log(url);
 	await new Email(user, url).sendWelcome();
 
 	createSendToken(user, 201, res);
@@ -166,7 +166,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 		user.passwordResetExpires = undefined;
 		user.save();
 
-		console.log(err);
+		// console.log(err);
 		return next(new AppError(500, 'There was an error sendig the email. Please try again later'));
 	}
 });
